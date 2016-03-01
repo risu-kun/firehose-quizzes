@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>FirehoseQuizApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+	<head>
+	  <title>FirehoseQuizApp</title>
+	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body>
+	<header>
+		<h1>Random comment wall!</h1>
+	</header>
 
-<%= yield %>
+		<%= yield %>
 
-</body>
+		<hr />
+		<br />
+		<%= simple_form_for Comment.new do |f| %>
+			<%= f.input :author, label: 'Who are you?' %>
+			<%= f.input :contents, label: 'Whatchu got to say?' %>
+			<%= f.submit 'Post' %>
+		<% end %>
+
+	</body>
 </html>
